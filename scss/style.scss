@@ -1,0 +1,1003 @@
+@import url('https://fonts.googleapis.com/css2?family=Allison&family=El+Messiri:wght@500&family=Merriweather&family=Montserrat&family=Oswald&family=Poppins&family=Roboto&family=Source+Sans+Pro:wght@400;600&display=swap');
+@import 'reset.scss';
+
+$color__one: #fff;
+$color__two: #4754EB;
+$color__three: #808080;
+$color__four: #1A1A1A;
+$color__five: #595959;
+$color__six: #F2F2F2;
+
+@mixin text ($fs, $fw, $ln, $color, $w, $m) {
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $ln;
+    color: $color;
+    width: $w;
+    margin: $m;
+}
+@mixin flex ($flex, $x, $y, $fd) {
+    display: $flex;
+    justify-content: $x;
+    align-items: $y;
+    flex-direction: $fd;
+}
+@mixin grid ($grid, $gc, $grg, $gcg){
+    display: $grid;
+    grid-template-columns: $gc;
+    grid-row-gap: $grg;
+    grid-column-gap: $gcg;
+}
+@mixin block ($w, $h, $bc, $br, $m) {
+    width: $w;
+    height: $h;
+    background-color: $bc;
+    border-radius: $br;
+    margin: $m;
+}
+@mixin location ($w, $m) {
+    max-width: $w;
+    margin: $m;
+}
+@mixin size ($w, $h) {
+    width: $w;
+    height: $h;
+}
+@mixin button ($w, $h, $b, $br, $bg, $fs, $fw, $ln, $color, $ta, $m){
+    width: $w;
+    height: $h;
+    border: $b;
+    border-radius: $br;
+    background-color: $bg;
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $ln;
+    color: $color;
+    text-align: $ta;
+    margin: $m;
+}
+@mixin border-style ($bg, $b, $br) {
+    background-color: $bg;
+    border: $b;
+    border-radius: $br;
+}
+@mixin position ($ps, $zi, $l, $t){
+    position: $ps;
+    z-index: $zi;
+    left: $l;
+    top: $t;
+}
+*{
+   font-family: 'Source Sans Pro', sans-serif; 
+}
+.header{
+    @include location(1440px, 52px auto 0);
+    background: radial-gradient(at -10% 90%, rgba(134, 51, 176, 0.4) 250px, rgba(71, 84, 235, 0.26) 25%, rgba(255, 255, 255, 0) 40%),
+                radial-gradient(at 40% 60%, rgba(71, 84, 235, 0.1) 30px, rgba(255, 255, 255, 0.4) 70%),
+                radial-gradient(at 90% 115%, rgba(71, 84, 235, 0.3) 60px, rgba(255, 255, 255, 0/6) 20%);
+    height: 770px;
+    .header__nav{
+        @include flex(flex, space-between, center, none);
+        @include location(1279px, 0 auto);
+        .header__nav__title{
+            .img{
+                display: none;
+            }
+            h3{
+                @include text(18px, 600, 135%, $color__two, 97px, 0 243px 0 0);
+            }
+        }
+        .header__nav__menu{
+            .list{
+                @include flex(flex, space-between, center, none);
+                width: 501px;
+                li{
+                    a{
+                        @include text(18px, 400, 135%,$color__three, none, 0);
+                        &:hover{
+                            color: $color__two;
+                        }
+                    }
+                }
+            }
+        }
+        .header__nav__button{
+            @include flex(flex, space-between, center, none);
+            .language{
+                @include text(18px, 600, 135%, $color__three, none, 0);
+                .link{
+                    @include text(18px, 600, 135%, $color__two, none, 0); 
+                }
+                a{
+                    @include text(18px, 600, 135%, $color__three, none, 0);   
+                }
+            }
+            .registration{
+                @include button(220px, 48px, none, 16px,$color__two, 18px, 500, 135%, $color__one, center, 0 0 0 16px);
+                &:hover{
+                    @include button(220px, 48px, 1px solid $color__two, 16px, $color__one, 18px, 500, 135%, $color__two, center, 0 0 0 16px);
+                    transition: 0.2s;
+                }
+            }
+        }
+        @media (max-width: 420px){
+            .header__nav__title{
+                @include flex(flex, none, center, none);
+                @include location(380px, -50px auto 0);
+                .menu{
+                    .img{
+                        display: block;
+                        margin-left: -120%;
+                    }
+                }
+                h3{
+                    @include text(18px, 600, 135%, $color__two,none, -8px 75% 0 -40%);
+                }
+                .icon{
+                    .img{
+                        display: block;
+                    }
+                }
+            }
+            .header__nav__menu{
+                display: none;
+            }
+            .header__nav__button{
+                display: none;
+            }
+        }
+    }
+    .header__content{
+        @include flex(flex, space-between, none, none);
+        .header__content__form{
+            .title{
+                @include text(40px, 500, 195%, $color__four, 628px, 120px 0 0 79px);
+            }
+            .newsletter{
+                @include location(465px, 40px 0 0 79px);
+                .newsletter__form{
+                    @include block(465px, 64px, rgba(255, 255, 255,0.5), 16px, none);
+                    @include flex(flex, space-between, none, none);
+                    .newsletter__form__text{
+                        @include text(16px, 400, 135%,$color__three, 169px, 20px 0 0 20px);  
+                    }
+                    .newsletter__form__button{
+                        @include block(137px, 48px, $color__one, 16px, 8px 8px 8px 0);
+                        .text{
+                            @include text(18px, 600, 135%, $color__two, 95px, 12px 25px);  
+                        }
+                        &:hover{
+                            @include block(137px, 48px, $color__two, 16px, none);
+                            transition: 0.2s;
+                            .text{
+                                @include text(18px, 600, 135%, $color__one, 95px, 12px 25px);  
+                            }
+                        }
+                    }
+                    
+                }
+                .newsletter__notification{
+                    .text{
+                        @include text(12px, 400, 135%, $color__five,344px, 16px 0 0 10px);
+                        .text__blue{
+                            color: $color__two;
+                        }
+                    }
+                }
+            }
+            .scroll{
+                @include flex(flex, none, center, none);
+                .scroll__image{
+                    margin: 114px 8px 0 79px;
+                }
+                .scroll__text{
+                    @include text(16px, 400, 135%, $color__one, 143px, 114px 0 0 0);
+                }
+            }
+        }
+        .header__content__image{
+            .image__main{
+                @include position(relative, 3, 20px, none);
+            }
+            .image__white{
+                @include position(relative, 2, 182px, -648px);
+            }
+            .image__blue{
+                @include position(relative, 1, 20px, -910px);
+            }
+        }
+        @media (max-width: 420px){
+            &{
+                @include flex(flex, none, center, column);
+            }    
+            .header__content__form{
+                .title{
+                    @include text(26px, 500, 195%, $color__four, 320px, 40px auto 0);
+                }
+                .newsletter{
+                    margin: 40px auto 0;
+                    .newsletter__form{
+                        @include block(330px, 56px, rgba(255, 255,255, 0.5), 16px, 0 auto);
+                        .newsletter__form__text{
+                            @include text(14px, 400, 135%,$color__three, none, 18px 0 0 16px); 
+                        }
+                        .newsletter__form__button{
+                            @include block(122px, 40px, $color__one, 16px, 8px 8px 8px 0);
+                            .text{
+                                @include text(14px, 600, 135%, $color__two, none, 11px 24px); 
+                            }
+                            &:hover{
+                                @include block(122px, 40px, $color__two, 16px, none);
+                                transition: 0.2s;
+                                .text{
+                                    @include text(14px, 600, 135%, $color__one, none, 11px 24px);  
+                                }
+                            }
+                        }
+                    }
+                    .newsletter__notification{
+                        @include location(334px, 0 auto 40px);
+                    }
+                }
+                .scroll{
+                    display: none;
+                }
+            }  
+            .header__content__image{
+                .image__main{
+                    max-width: 343px;
+                    @include position(relative, 3, 20px, -40px);
+                }
+                .image__white{
+                    @include size(264px, 264px);
+                    @include position(relative, 2, 97px, -390px);
+                }
+                .image__blue{
+                    @include size(184px, 184px);
+                    @include position(relative, 1, 20px, -565px);
+                }
+            }
+        }
+    }
+    @media (max-width:420px){
+        &{
+            background: radial-gradient(at 5% 55%, rgba(104, 71, 235, 0.16) 30%, rgba(255, 255, 255, 0.7) 70%),
+            radial-gradient(at 5% 55%, rgba(104, 71, 235, 0.16) 5%, rgba(255, 255, 255, 0.7) 20%),
+            radial-gradient(at 22% 140%, rgba(134, 51, 176, 0.3) 5px, rgba(71, 84, 235, 0.8) 1%, rgba(255, 255, 255, 0.6) 30%),
+            radial-gradient(at 70% 110%, rgba(134, 51, 176, 0.3) 5px, rgba(71, 84, 235, 0.8) 1%, rgba(255, 255, 255, 0.8) 40%);
+        }
+    }
+}
+main{
+    .advantages{
+        @include location(1440px, 0 auto);
+        .advantages__title{
+            .title{
+                @include text(36px, 600, 112%, $color__four, none, 80px 0 45px 79px); 
+            }
+            @media (max-width: 420px){
+                .title{
+                    @include text(18px, 600, 125%, $color__four, none, 40px 0 38px 30px); 
+                }
+            }
+        }
+        .advantages__content{
+            @include flex(flex, space-between, center, none);
+            @include location(1340px, 0 auto);
+            .advantages__content__block{
+                @include block(437px, 240px, rgba(232, 232, 231, 0.158), 24px, 0 0 80px 0);
+                box-shadow: 0px 4px 20px rgba(25, 25, 25, 0.05);
+                .title{
+                    @include flex(flex, none, center, none);
+                    @include size(437px, 80px);
+                    @include border-style(rgba(255, 255, 255, 0.5), none, 24px 24px 0 0);
+                    padding: 15px 16px;
+                    h3{
+                        @include text(24px, 600, 100%, $color__four, none, 0 0 0 12px);
+                    }
+                }
+                .text {
+                    margin: 16px 24px 24px;
+                    p{
+                        @include text(18px, 400, 135%, $color__three, 370px, 21px 0 104px 5px);
+                    }
+                }
+            }
+            @media (max-width: 420px){
+                &{
+                    @include flex(flex, none, center, column);
+                    margin-bottom: 40px;
+                }
+                .advantages__content__block{
+                    @include size(343px, 178px);
+                    margin: 0 0 16px 0;
+                    .title{
+                        @include size(343px, 64px);
+                        .img{
+                            @include size(36px, 36px);
+                        }
+                        h3{
+                            @include text(18px, 600, 125%, $color__four, none, 0 0 0 12px);
+                        }
+                    }
+                    .text{
+                        p{
+                            @include text(14px, 400, 135%, $color__three, 296px, 21px 0 52px 0);
+                            span{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .work{
+        @include location(1440px, 0 auto);
+        background: radial-gradient(at 0% 70%, rgb(255, 192, 221) 10px, rgba(255, 255, 255, 0.6) 40%),
+        radial-gradient(at 90% -10%, rgba(134, 51, 176, 0.74) 190px, rgba(71, 84, 235, 0.64) 25%, rgba(255, 255, 255, 0) 40%),
+        radial-gradient(at 0% 0%, rgb(235, 232, 227, 0.4) 40%, rgba(255, 255, 255, 1) 60%);
+        height: 800px;
+        .work__title{
+            .title{
+                @include text(36px, 600, 112%, $color__four, none, 0 0 40px 79px);
+                padding-top: 80px;
+            }
+            @media (max-width: 420px){
+                .title{
+                    @include text(18px, 600, 125%, $color__four, none, 0 0 24px 33px);
+                    padding-top: 39px;
+                }
+            }
+        }
+        .work__container{
+            @include flex(flex, space-between, none, none);
+            max-width: 1380px;
+            .work__container__image{
+                .img__pink{
+                    @include position(relative, 1, 79px, 270px);
+                }
+                .img__white{
+                    @include position(relative, 2, 167px, -300px);
+                }
+                .img__main{
+                    @include position(relative, 3, 167px, -843px);
+                }
+                @media (max-width: 420px){
+                    .img__pink{
+                        @include position(relative, 1, 21px, 112px);
+                        @include size(184px, 184px);
+                    }
+                    .img__white{
+                        @include position(relative, 2, 100px, -186px);
+                        @include size(264px, 264px);
+                    }
+                    .img__main{
+                        @include position(relative, 3, 100px, -454px);
+                        @include size(264px, 264px);
+                    }
+                }
+            }
+            .work__container__content{ 
+                .line{
+                    @include flex(flex, space-between, center, none);
+                    @include location(430px, 30px 0 30px 0);
+                    .line__text{
+                        @include text(18px, 400, 135%, $color__one, none, 0);
+                    }
+                    .blue{
+                        @include text(18px, 600, 135%, $color__two, none, 0);
+                    }
+                    .line__border{
+                        width: 24px;
+                        border-top: 1px solid $color__one;
+                        margin-top: 2px;
+                    }
+                }
+                .content{
+                    .content__title{
+                        @include text(36px, 600, 112%, $color__four, 628px, 0 0 16px 0);
+                    }
+                    .content__subtitle{
+                        @include text(18px, 600, 135%, $color__two, 628px, 0 0 24px 0);
+                    }
+                    .content__text{
+                        @include text(18px, 400, 135%, $color__three, 400px, 0 0 16px 0);
+                    }
+                    .content__button{
+                        @include button(247px, 56px, none, 16px, $color__two, 18px, 600, 135%, $color__one, center, 55px 0 0 0);
+                        &:hover{
+                            @include button(247px, 56px, 1px solid $color__two, 16px, $color__one, 18px, 600, 135%, $color__two, center, 55px 0 0 0);
+                            transition: 0.2s;
+                        }
+                    }
+                }
+                @media (max-width: 420px){
+                    .line{
+                        @include location(304px, -380px 0 24px 0);
+                        .line__text{
+                            @include text(14px, 400, 135%, $color__one, none, 0);
+                        }
+                        .blue{
+                            @include text(14px, 600, 135%, $color__two, none, 0);
+                        }
+                    }
+                    .content{
+                        .content__title{
+                            @include text(26px, 600, 125%, $color__four, 280px, 0 0 8px 0);
+                        }
+                        .content__subtitle{
+                            @include text(14px, 600, 135%, $color__two, 260px, 0 0 16px 0);
+                        }
+                        .content__text{
+                            @include text(14px, 400, 135%, $color__three, 335px, 0 0 8px 0);
+                        }
+                        .content__button{
+                            @include button(322px, 48px, none, 14px, $color__two, 18px, 600, 135%, $color__one, center, 32px 0 40px 0);
+                            &:hover{
+                                @include button(322px, 48px, 1px solid $color__two, 14px, $color__one, 18px, 600, 135%, $color__two, center, 32px 0 40px 0);
+                                transition: 0.2s;
+                            }
+                        }
+                    }
+                }
+            }
+            @media (max-width: 420px){
+                @include flex(flex, none, center, column);
+            }
+        }
+        @media (max-width: 420px){
+            &{
+                height: 890px;
+                background: radial-gradient(at 0% 35%, rgba(255, 192, 221, 0.6) 10px, rgba(255, 255, 255, 0.58) 40%),
+                radial-gradient(at 90% 50%, rgba(107, 51, 176, 0.736) 100px, rgba(115, 71, 235, 0.64) 35%, rgba(255, 255, 255, 0) 70%),
+                radial-gradient(at 30% 0%, rgb(235, 232, 227, 0.4) 30%,rgba(255, 255, 255, 0.5) 60%),
+                radial-gradient(at 30% 100%, rgb(235, 232, 227, 1) 30%,rgba(255, 255, 255, 1) 60%);
+            }
+        }
+
+    }
+    .price{
+        @include location(1440px, 0 auto 88px);
+        .price__title{
+            .title{
+                @include text(36px, 600, 112%, $color__four, 628px, 80px 0 40px 80px);
+            }
+            @media (max-width: 420px){
+                .title{
+                    @include text(18px, 600, 125%, $color__four, 123px, 40px 0 40px 30px);
+                }
+            }
+        }
+        .price__content{
+            @include location(1344px, 0 auto);
+            @include grid(grid, repeat(4, 318px), none, 24px);
+            .price__content__column{
+                @include block(318px, 552px, rgba(232, 232, 231, 0.158), 24px, none);
+                box-shadow: 0px 4px 20px rgba(25, 25, 25, 0.05);
+                .title{
+                    @include block(318px, 96px, rgba(255, 255, 255, 0.5), 24px 24px 0 0, none);
+                    h3{
+                        @include text(24px, 600, 130%, $color__four, 260px, 0);
+                        padding: 20px 0 20px 24px;
+                    }
+                }
+                .line{
+                    @include grid(grid, 64px 254px, none, none);
+                    .line__img{
+                        margin: 0 0 0 24px;
+                    }
+                    .line__text{
+                        @include text(18px, 400, 135%, $color__three, 224px, 0 0 16px 16px);
+                    }
+                }
+                .one{
+                    margin-top: 20px;
+                }
+                .button{
+                    @include button(270px, 56px, none, 16px, $color__one, 18px, 600, 135%, $color__two, center, 0 0 24px 24px);
+                    &:hover{
+                        @include button(270px, 56px, none, 16px, $color__two, 18px, 600, 135%, $color__one, center, 0 0 24px 24px);
+                        transition: 0.2s;
+                    }
+                }
+
+            }
+            @media (max-width: 420px){
+                &{
+                    @include location(320px, 0 auto);
+                    @include grid(grid, 318px, 16px, none);
+                }
+                .price__content__column{
+                    @include block(320px, 438px, rgba(232, 232, 231, 0.158), 24px, none);
+                    box-shadow: 0px 4px 20px rgba(25, 25, 25, 0.05);
+                    .title{
+                        @include block(320px, 80px, rgba(255, 255, 255, 0.5), 24px 24px 0 0, none);
+                        h3{
+                            @include text(18px, 600, 135%, $color__four, 176px, 0);
+                            padding: 15px 0 15px 16px;
+                        }
+                    }
+                    .line{
+                        @include grid(grid, 44px 256px, none, none);
+                        .line__img{
+                            margin: 0 0 0 16px;
+                        }
+                        .line__text{
+                            @include text(14px, 400, 135%, $color__three, 218px, 0 0 16px 16px);
+                        }
+                    }
+                    .one{
+                        margin-top: 16px;
+                    }
+                    .button{
+                        @include button(288px, 48px, none, 16px, $color__one, 14px,600, 135%, $color__two, center, 24px 0 0 16px);
+                        &:hover{
+                            @include button(288px, 48px, none, 16px, $color__two, 14px, 600, 135%, $color__one, center, 24px 0 0 16px);
+                            transition: 0.2s;
+                        }
+                    }
+                }
+            }
+        }
+        @media (max-width: 420px){
+            &{
+                height: 1827px;
+            }
+        }
+    }
+    .reviews{
+        @include location(1440px, 0 auto);
+        background: radial-gradient(at 110% 20%, rgb(255, 189, 220) 5px, rgba(255, 255, 255, 0.2) 35%),
+        radial-gradient(at 100% 0%, rgb(253, 182, 215) 5px, rgba(255, 255, 255, 0.2) 25%),
+        radial-gradient(at 100% 100%, rgba(111, 51, 176, 0.54) 90px, rgba(71, 84, 235, 0.44) 15%, rgba(255, 255, 255, 0) 35%);
+        height: 800px;
+       .reviews__title{
+           padding-top: 80px;
+            .title{
+                @include text(36px, 600, 112%, $color__four, none, 0 0 0 79px);
+            }
+            @media (max-width: 420px){
+                &{
+                    padding-top: 40px;
+                }
+                .title{
+                    @include text(18px, 600, 125%, $color__four, none, 0 0 40px 30px);
+                }
+            }
+        }
+        .reviews__content{
+            .reviews__content__block{
+                @include block(628px, 240px, rgb(251, 251, 251), 24px, none);
+                box-shadow: 0px 4px 20px rgba(25, 25, 25, 0.05);
+                .title{
+                    @include flex(flex, space-between, center, none);
+                    @include block(628px, 96px, rgba(255, 255, 255, 0.6), 24px 24px 0px 0px, 0 auto);
+                    .title__name{
+                        @include flex(flex, none, center, none);
+                        .icon{
+                            margin-left: 16px;
+                        }
+                        h3{
+                            @include text(24px, 600, 100%, $color__four, none, 0 0 0 16px);
+                        }
+                    }
+                    .title__date{
+                        p{
+                            @include text(18px, 400, 135%, $color__three, none, 0 20px 0 0);
+                        }
+                    }
+                }
+                .text{
+                    p{
+                        @include text(18px, 400, 135%, $color__three, 540px, 16px 0 16px 24px);    
+                    }
+                }
+                .stars{
+                    margin-left: 24px;
+                }
+                &:hover{
+                    transform: scale(1.3);
+                    transition: 0.3s;
+                    z-index: 4;
+                }
+            }
+            .one{
+                @include position(relative,  4, 392px, 20px);
+            }
+            .two{
+                @include position(relative, 3, 89px, -166px);
+            }
+            .three{
+                @include position(relative, 2, 712px, -270px);
+            }
+            .four{
+                @include position(relative, 1, 253px, -374px);
+            }
+            @media (max-width: 420px){
+                &{
+                    @include flex(flex, none, center, column);
+                    padding-bottom: 30px;
+                }
+                .reviews__content__block{
+                    @include size(343px, 241px);
+                    margin-bottom: 16px;
+                    position: static;
+                    .title{
+                        @include size(342px, 72px);
+                        .title__name{
+                            @include flex(flex, none, center, none);
+                            .icon{
+                                @include size(48px, 48px);
+                            }
+                            h3{
+                                @include text(18px, 600, 125%, $color__four, none, 0 0 0 16px);
+                            }
+                        }
+                        .title__date{
+                            p{
+                                @include text(14px, 400, 135%, $color__three, none, 0 20px 0 0);
+                            }
+                        }
+                    }
+                    .text{
+                        p{
+                            @include text(14px, 400, 135%, $color__three, 295px, 16px 0 16px 24px);    
+                        }
+                    }
+                    .stars{
+                        margin-left: 24px;
+                    }
+                    &:hover{
+                        transform: none;
+                    }
+                }
+                .four{
+                    @include border-style(rgba(255, 255, 255, 0.2), 1px solid $color__one, none);
+                }
+            }
+        }
+        .reviews__button{
+            .button{
+                @include button(274px, 56px, none, 16px, $color__one, 18px, 600, 135%, $color__two, center, 0);
+                @include position(relative, 1, 1066px, -420px);
+                &:hover{
+                    @include button(274px, 56px, none, 16px, $color__two, 18px, 600, 135%, $color__one, center, 0);
+                    transition: 0.2s;
+                }
+            }
+            @media (max-width: 420px){
+                .button{
+                    display: none;
+                }
+            }
+        }
+        @media (max-width: 420px){
+            &{
+                @include location(420px, 0 auto); 
+                height: 1165px;
+                background: radial-gradient(at 60% -30%, rgba(111, 51, 176, 0.2) 30px, rgba(71, 84, 235, 0.2) 20%, rgba(255, 255, 255, 0) 45%),
+                radial-gradient(at 100% -30%, rgba(111, 51, 176, 0.3) 15px, rgba(76, 71, 235, 0.26) 20%, rgba(255, 255, 255, 0) 35%),
+                radial-gradient(at 80% 150%, rgb(253, 182, 215) 50px, rgba(255, 255, 255, 0.2) 55%);
+            }
+        }
+    }
+    .sale{
+        @include location(1440px, 0 auto);
+        @include flex(flex, none, none, none);
+        background-color: $color__one;
+        .sale__image{
+            .img{
+                margin: 0 24px 0 49px;
+            }
+            @media (max-width: 420px){
+                &{
+                    @include location(364px, 0 0 -40px -130px);  
+                }
+                img{
+                    @include size(357px, 364px);
+                }
+            }
+        }
+        .sale__content{
+            .sale__content__title{
+                .title{
+                    @include text(56px, 600, 125%, $color__four, 428px, 120px 0 0 0);
+                }
+            }
+            .sale__content__form{
+                @include button(465px, 64px, none, 16px, #F2F2F2, 18px, 400, 135%, $color__three, none, 40px 0 0 0);
+                @include flex(flex, space-between, center, none);
+                padding-left: 16px;
+                .button{
+                    @include button(143px, 48px, none, 16px, $color__two, 18px, 600, 135%, $color__one, center, 8px);
+                    padding-top: 10px;
+                    &:hover{
+                        @include button(143px, 48px, 1px solid $color__two, 16px, $color__one, 18px, 600, 135%, $color__two, center, 8px);
+                        transition: 0.2s;
+                    }
+                }   
+            }
+            .sale__content__text{
+                .text{
+                    @include text(12px, 400, 135%, $color__five, 324px, 16px 0 0 10px);
+                    span{
+                        color: $color__two;
+                    }
+                }
+            }
+            @media(max-width: 420px){
+                &{
+                    margin: 0 auto 40px;
+                }
+                .sale__content__title{
+                    .title{
+                        @include text(36px, 600, 125%, $color__four, 280px, 0 0 40px 5px);
+                    }
+                }
+                .sale__content__form{
+                    @include button(320px, 56px, none, 16px, #F2F2F2, 14px, 400, 135%, $color__three, none, 40px 0 0 0);
+                    @include flex(flex, space-between, center, none);
+                    padding-left: 16px;
+                    .button{
+                        @include button(122px, 40px, none, 16px, $color__two, 14px, 600, 135%, $color__one, center, 5px);
+                        padding-top: 10px;
+                        &:hover{
+                            @include button(122px, 40px, 1px solid $color__two, 16px, $color__one, 14px, 600, 135%, $color__two, center, 5px);
+                            transition: 0.2s;
+                        }
+                    }   
+                }
+                .sale__content__text{
+                    .text{
+                        @include text(12px, 400, 135%, $color__five, 324px, 16px 0 0 10px);
+                        span{
+                            color: $color__two;
+                        }
+                    }
+                }
+            }
+        }
+        @media (max-width: 420px){
+            &{
+                @include flex(flex, none, center, column);
+
+            }
+        }
+    }
+    .questions{
+        @include location(1440px, 0 auto);
+        height: 728px;
+        background: radial-gradient(at 110% 20%, rgba(253, 182, 207, 0.794) 5px, rgba(255, 189, 244, 0.56) 25%, rgba(255, 255, 255, 0.2) 40%),
+        radial-gradient(at 100% 0%, rgba(253, 182, 229, 0.2) 5px, rgba(255, 255, 255, 0.2) 25%),
+        radial-gradient(at 0% 120%, rgba(111, 51, 176, 0.5) 250px, rgba(71, 84, 235, 0.4) 25%, rgba(255, 255, 255, 0) 45%);
+        .questions__title{
+            padding-top: 80px;
+            .title{
+                @include text(36px, 600, 112%, $color__four, none, 0 0 40px 79px);
+            }
+            @media (max-width: 420px){
+                .title{
+                    @include text(18px, 600, 125%, $color__four, 234px, -40px 0 20px 30px);
+                }
+            }
+        }
+        .questions__block{
+            margin: 0 0 -32px 48px;
+            .questions__block__title{
+                @include block(1344px, 96px, rgba(255, 255, 255, 0.8), 16px 16px 0 0, none);
+                @include flex(flex, none, center, none);
+                .title{
+                    @include text(36px, 600, 112%, $color__four, none, 28px 0 0 32px);
+                    padding-bottom: 20px;
+                }
+            }
+            .questions__block__image{
+                @include size(48px, 48px);
+                .image{
+                    @include position(relative, none, 1244px, -88px);
+                    &:hover{
+                        transform: rotate(45deg);
+                    }
+                }
+                &:hover + .questions__block__text{
+                    display: block;
+                }
+            }
+            .questions__block__text{
+                @include block(1344px, 112px, rgba(252, 252, 252, 0.4), 0 0 16px 16px, -50px 0 50px);
+                padding-top: 16px;
+                display: none;
+                .text{
+                    @include text(18px, 400, 135%, $color__three, 1212px, 0 48px 24px 24px);
+                }
+            }
+            @media (max-width: 420px){
+                &{
+                    @include location(353px, 0 auto);
+                    margin-bottom: -34px;
+                }
+                .questions__block__title{
+                    @include block(343px, 80px, rgba(255, 255, 255, 0.8), 16px 16px 0 0, none);
+                    .title{
+                        @include text(26px, 600, 125%, $color__four, 233px, 24px 0 0 16px);
+                        padding-bottom: 20px;
+                    }
+                }
+                .questions__block__image{
+                    @include size(48px, 48px);
+                    .image{
+                        @include position(relative, none, 261px, -78px);
+                    }
+                }
+                .questions__block__text{
+                    @include block(343px, 70px, rgba(252, 252, 252, 0.4), 0 0 16px 16px, none);
+                    padding-top: 16px;
+                    display: none;
+                    .text{
+                        @include text(14px, 400, 135%, $color__three, 285px, 0 24px 24px 24px);
+                        .hiden{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        @media (max-width: 420px){
+            &{
+                height: 551px;
+                background: radial-gradient(at 80% -50%, rgba(253, 182, 207, 0.5) 5px, rgba(255, 189, 244, 0.56) 25%, rgba(255, 255, 255, 0.2) 60%),
+                radial-gradient(at 100% 0%, rgba(253, 182, 229, 0.2) 5px, rgba(255, 255, 255, 0.2) 25%),
+                radial-gradient(at 0% 180%, rgba(111, 51, 176, 0.5) 100px, rgba(71, 84, 235, 0.4) 35%, rgba(255, 255, 255, 0) 55%),
+                radial-gradient(at 40% 120%, rgba(71, 84, 235, 0.2) 50px, rgba(255, 255, 255, 0) 55%),
+                radial-gradient(at 80% 120%, rgba(111, 51, 176, 0.5) 20px, rgba(71, 84, 235, 0.4) 10%, rgba(255, 255, 255, 0) 35%)
+            }
+        }
+    }
+    .connection{
+        @include location(1440px, 0 auto);
+        @include flex(flex, none, none, none);
+        .connection__content{
+            .connection__content__title{
+                .title{
+                    @include text(36px, 600, 112%, $color__four, none, 80px 0 16px 80px);
+                }
+                .subtitle{
+                    @include text(18px, 400, 135%, $color__three, 455px, 0 0 24px 80px);
+                }
+            }
+            .connection__content__form{
+                .form{
+                    @include button(465px, 65px, none, 16px, $color__six, 18px, 400, 135%, $color__three, none, 0 0 16px 80px);
+                    padding: 0 0 6px 16px;
+                }
+                .last{
+                    @include size(465px, 80px);
+                    padding: 0 0 25px 16px;
+                }
+            }
+            .connection__content__button{
+                @include flex(flex, space-between, center, none);
+                @include location(449px, 30px 0 80px 80px);
+                .send{
+                    @include button(203px, 56px, none, 16px, $color__two, 18px, 600, 135%, $color__one, center, 0);
+                    &:hover{
+                        @include button(203px, 56px, none, 16px, $color__one, 18px, 600, 135%, $color__two, center, 0);
+                        transition: 0.2s;
+                    }
+                }
+                .notification{
+                    @include text(12px, 400, 135%, $color__three, 228px, 0);
+                    .text__blue{
+                        color: $color__two;
+                    }
+                }
+            }
+            @media (max-width: 420px){
+                .connection__content__title{
+                    .title{
+                        @include text(26px, 600, 125%, $color__four, 320px, 40px 0 8px 30px);
+                    }
+                    .subtitle{
+                        @include text(14px, 400, 135%, $color__three, 300px, 0 0 16px 30px);
+                    }
+                }
+                .connection__content__form{
+                    width: 330px;
+                    .form{
+                        @include button(330px, 48px, none, 16px, $color__six, 14px, 400, 135%, $color__three, none, 0 0 16px 30px);
+                        padding: 0 0 6px 16px;
+                    }
+                    .last{
+                        @include size(330px, 64px);
+                        padding: 0 0 25px 16px;
+                    }
+                }
+                .connection__content__button{
+                    @include flex(flex, none, flex-start, column);
+                    margin-left: 30px;
+                    .send{
+                        @include button(169px, 48px, none, 16px, $color__two, 14px, 600, 135%, $color__one, none, 0 0 16px 0);
+                        &:hover{
+                            @include button(169px, 48px, none, 16px, $color__one, 14px, 600, 135%, $color__two, center, 0 0 16px 0);
+                            transition: 0.2s;
+                        }
+                    }
+                    .notification{
+                        @include text(12px, 400, 135%, $color__three, 290px, 0 0 -40px 0);
+                    }
+                }
+            }
+        }
+        .connection__image{
+            .image{
+                margin: 70px 220px 0 0;
+            }
+        }
+        @media (max-width: 420px){
+            &{
+                @include flex(flex, none, none, column);
+            }
+            .connection__image{
+                display: none;
+            }
+        }
+    }    
+}
+.footer{
+    @include location(1440px, 0 auto);
+    @include flex(flex, space-between, center, none);
+    height: 120px;
+    background-color: $color__two;
+    .footer__copyright{
+        .title{
+            @include text(18px, 400, 135%, $color__one, 93px, 24px 0 3px 80px);
+        }
+        .subtitle{
+            @include text(16px, 400, 135%, #D9D9D9, 192px, 0 0 22px 80px);
+        }
+    }
+    .footer__return{
+        @include flex(flex, none, center, none);
+        .link{
+            @include text(18px, 400, 135%, $color__one, none, 0 16px 0 0);
+            .hidden{
+                display: none;
+            }
+        }   
+        .image{
+            margin-right: 88px;
+        }     
+    }
+    @media (max-width: 420px){
+        &{
+            @include flex(flex, none, center, none);
+            height: 104px;
+            max-width: 420px;
+            .footer__copyright{
+                .title{
+                    @include text(14px, 400, 135%, $color__one, 73px, 16px 0 8px 30px);
+                }
+                .subtitle{
+                    @include text(14px, 400, 135%, #D9D9D9, 168px, 0 0 22px 30px);
+                }
+            }
+            .footer__return{
+                @include flex(flex, none, center, none);
+                width: 71px;
+                .link{
+                    .visible{
+                        display: none;
+                    }
+                    .hidden{
+                        @include text(14px, 400, 135%, $color__one, none, 0 -5px 0 -20px);
+                        display: block;
+                    }
+                }   
+                .image{
+                    @include size(16px, 16px);
+                }     
+            }
+        }
+    }
+}
